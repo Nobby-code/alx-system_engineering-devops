@@ -1,3 +1,2 @@
-#!/bin/bah
-ls -na
+#!/bin/bash
 ls -na
