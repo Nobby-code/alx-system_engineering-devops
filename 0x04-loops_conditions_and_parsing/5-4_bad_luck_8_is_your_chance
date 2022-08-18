@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# while loop using if, elif and else
+
+i=0
+while [ $i -lt 10 ]
+do
+    if [ $i = 3 ]
+    then
+        echo "bad luck"
+    elif [ $i = 7 ]
+    then
+        echo "good lack"
+    else
+        echo "Best School"
+    fi
+    ((i++))
+done
