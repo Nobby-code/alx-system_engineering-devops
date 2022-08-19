@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# displaying the infinite loop and displays I am invincible if receives SIGTERM
+
+trap interrup SIGTERM
+
+interrup()
+{
+    echo "I am invincible!!!"
+}
+
+while :
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
