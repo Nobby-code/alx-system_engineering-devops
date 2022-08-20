@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# reading /etc/passwd file
+
+file=/etc/passwd
+
+while read -r line
+do
+    echo $line | cut -d':' --fields=1,3,6
+done < "$file"
