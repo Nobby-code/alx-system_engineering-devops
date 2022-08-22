@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displaying IP and HTTP_CODE in a sorted manner, counting the no. they appear
+
+awk '{print $1, $9}' apache-access.log | sort | uniq -c | sort -nr
