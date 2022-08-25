@@ -2,4 +2,4 @@
 # Display listening ports
 #  -show listening ports and their PID
 
-netstat -lp
+netstat -l --program
