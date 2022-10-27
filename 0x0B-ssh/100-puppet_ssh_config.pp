@@ -1,7 +1,5 @@
 # Creating a user to login without password
 
-user { 'root':
-    ensure     => 'present',
-    shell      => '/bin/bash',
-    password   => '*',
+exec{ 'echo "PasswordAuthentiication no\nIdentifyFile ~/.ssh/school" >> /etc/ssh/ssh_config':
+	path => '/bin/'
 }
