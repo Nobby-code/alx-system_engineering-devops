@@ -1,5 +1,5 @@
 # Creating a user to login without password
 
-exec{ 'echo "PasswordAuthentiication no\nIdentifyFile ~/.ssh/school" >> /etc/ssh/ssh_config':
-	path => '/bin/'
+exec { 'echo "PasswordAuthentication no\nIdentityFile ~/.ssh/school" >> /etc/ssh/ssh_config':
+        path    => '/bin/'
 }
