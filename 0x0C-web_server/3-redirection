@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # permanent redirection where /redirect_me is redirected to another page
 
-sed -i "48i\\\tif (\$request_filename ~ redirect_me){\n\t\t\
-rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4? permanent;\n\t}" /etc/nginx/sites-available/default
+sed -i "48i\\\t\
+rewrite ^/redirect_me$ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\n\t" /etc/nginx/sites-available/default
 
 service nginx restart
