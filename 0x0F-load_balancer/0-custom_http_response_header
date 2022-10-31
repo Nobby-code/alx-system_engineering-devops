@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Script to configure nginx so that it contains X-Served-By header
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo 'Hello World!' | sudo tee /var/www/html/index.html
+
+sudo sed -i "57i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+
+sudo service nginx restart
