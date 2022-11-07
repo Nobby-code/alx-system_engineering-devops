@@ -1,0 +1,14 @@
+# setting up ufw and setting up rules to allow ports 22, 443 and 80
+sudo ufw default deny incoming
+sudo ufw defalut allow outgoing
+
+# ports to allow
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+
+# checking status
+sudo ufw status numbered
+
+# enabling ufw
+sudo ufw enable
