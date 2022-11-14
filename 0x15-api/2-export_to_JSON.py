@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """
-get data from an api based on the userd id that is passed as argument
+python API
 """
 import json
+
 import requests
 from sys import argv
 
@@ -20,7 +21,7 @@ if __name__ == "__main__":
         person_res = requests.get(person_url)
         todos_res = requests.get(todos_url)
 
-        """ get the obj responses body"""
+        """ obj responses body"""
         person_obj = person_res.json()
         todos_obj = todos_res.json()
 
