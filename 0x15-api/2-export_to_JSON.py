@@ -20,10 +20,6 @@ if __name__ == "__main__":
     emp_obj = emp_response.json()
     todo_obj = todo_response.json()
 
-    ''' initialization '''
-    done_count = 0
-    done_tasks = []
-
     ''' working with file '''
     jsonfile = '{}.json'.format(emp_obj['id'])
     name = emp_obj['username']
