@@ -1,41 +1,35 @@
 #!/usr/bin/python3
-"""
-python API
-"""
+'''python api to return todo list of a given employee id'''
+
 import json
 
 import requests
 from sys import argv
 
-
 if __name__ == "__main__":
 
-    if len(argv) == 2:
-        url_base = 'https://jsonplaceholder.typicode.com/users/'
-        person_url = '{}{}'.format(url_base, argv[1])
-        todos_url = '{}{}/{}'.format(url_base, argv[1], 'todos')
+    emp_id = argv[1]
+    emp_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(emp_id)
+    todo_url = '{}/{}'.format(emp_url, 'todos')
 
-        """ do two request
-        one for user personal info and for todos tasks
-        """
-        person_res = requests.get(person_url)
-        todos_res = requests.get(todos_url)
+    '''responses'''
+    emp_response = requests.get(emp_url)
+    todo_response = requests.get(todo_url)
 
-        """ obj responses body"""
-        person_obj = person_res.json()
-        todos_obj = todos_res.json()
+    ''' object response body '''
+    emp_obj = emp_response.json()
+    todo_obj = todo_response.json()
 
-        """ working with the data """
-        filename = '{}.json'.format(person_obj['id'])
-        username = person_obj['username']
-        result = []
+    ''' working with file '''
+    jsonfile = '{}.json'.format(emp_obj['id'])
+    name = emp_obj['username']
+    result = []
 
-        for obj in todos_obj:
-            task = {}
-            task['task'] = obj['title']
-            task['completed'] = obj['completed']
-            task['username'] = username
-            result.append(task)
-
-        with open(filename, 'w') as f:
-            json.dump({person_obj['id']: result}, f)
+    for task in todo_obj:
+        t = {}
+        t['task'] = task['title']
+        t['completed'] = task['completed']
+        t['username'] = name
+        result.append(t)
+    with open(jsonfile, 'w') as f:
+        json.dump({emp_obj['id']: result}, f)
