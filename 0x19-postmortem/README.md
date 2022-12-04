@@ -1,5 +1,8 @@
 SYSTEM OUTAGE ISSUE
 
+You know what no system is failure free, each and every system all over the world fail at some point. That's why we say software development is a continual learning. 
+No bags we only know bugs.
+
 Issue mummery
 
 On Friday December 2, 2022, at around 7:00 am EAT, requests by users to use a specific API that updates a specific table of a Hospital Management System resulted into 500 error response messages. This therefore reduced the functionality of the application in that specific hospital and hence almost everything came into a stand still because other functionalities depend of the failed part. The root cause of this outage was an incomplete system update where changes made on the databases were not pushed.
