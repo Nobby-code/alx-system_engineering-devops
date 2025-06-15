@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# Custom base alphabets
+water_base="ewatr"
+stir_base="ti.r"
+bestchol_base="bestchol"
+
+# Get environment values
+w=$WATER
+s=$STIR
+
+# Function to convert from custom base to decimal
+base_to_dec() {
+  local input=$1
+  local base_chars=$2
+  local base_len=${#base_chars}
+  local result=0
+  local i val char
+
+  for (( i=0; i<${#input}; i++ )); do
+    char="${input:$i:1}"
+    val=$(expr index "$base_chars" "$char" - 1)
+    result=$(( result * base_len + val ))
+  done
+
+  echo "$result"
+}
+
+# Function to convert decimal to custom base
+dec_to_base() {
+  local num=$1
+  local base_chars=$2
+  local base_len=${#base_chars}
+  local result=""
+
+  while (( num > 0 )); do
+    remainder=$(( num % base_len ))
+    result="${base_chars:remainder:1}$result"
+    num=$(( num / base_len ))
+  done
+
+  echo "${result:-${base_chars:0:1}}"
+}
+
+# Convert both to decimal
+dec_w=$(base_to_dec "$w" "$water_base")
+dec_s=$(base_to_dec "$s" "$stir_base")
+
+# Add the values
+sum=$(( dec_w + dec_s ))
+
+# Convert to bestchol base
+dec_to_base "$sum" "$bestchol_base"
